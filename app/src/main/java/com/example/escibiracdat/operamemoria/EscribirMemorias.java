@@ -1,4 +1,4 @@
-package com.example.escibiracdat;
+package com.example.escibiracdat.operamemoria;
 
 import android.content.Context;
 import android.os.Environment;
@@ -14,14 +14,15 @@ import java.util.Locale;
 
 
 /**
+ * Escribiendo en memoria interna y en memoria externa
  * @author Elena G (Beelzenef)
  */
 
-public class Memoria {
+public class EscribirMemorias {
 
     private Context contexto;
 
-    public Memoria(Context c) {
+    public EscribirMemorias(Context c) {
         this.contexto = c;
     }
 

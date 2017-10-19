@@ -7,7 +7,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.escibiracdat.operamemoria.EscribirMemorias;
+
 /**
+ * Escribiendo en memoria interna
  * @author Elena G (Beelzenef)
  */
 public class EscribirMemIntActivity extends AppCompatActivity {
@@ -20,7 +23,7 @@ public class EscribirMemIntActivity extends AppCompatActivity {
     TextView txtV_Resultado;
     TextView txtV_PropiedadesFichero;
 
-    Memoria miMemoria;
+    EscribirMemorias miEscribirMemorias;
 
     public final static String NOMBREFICHERO = "resultado.txt";
     String textoAEscribir;
@@ -28,7 +31,7 @@ public class EscribirMemIntActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_escribir_mem_int);
+        setContentView(R.layout.activity_escribir_mem_ext);
 
         // Identificando controles
         edT_operando1 = (EditText)findViewById(R.id.edT_Operando1);
@@ -37,7 +40,7 @@ public class EscribirMemIntActivity extends AppCompatActivity {
         txtV_Resultado = (TextView)findViewById(R.id.txtV_Resultado);
         txtV_PropiedadesFichero = (TextView)findViewById(R.id.txtV_PropiedadesFicheroInt);
 
-        miMemoria = new Memoria(getApplicationContext());
+        miEscribirMemorias = new EscribirMemorias(getApplicationContext());
     }
 
     public void onClik_SumarOperandos(View v)
@@ -72,8 +75,8 @@ public class EscribirMemIntActivity extends AppCompatActivity {
 
     void EscribiendoMemInt()
     {
-        if (miMemoria.escribirInterna(NOMBREFICHERO, textoAEscribir, false, "UTF-8"))
-            txtV_PropiedadesFichero.setText(miMemoria.mostrarPropiedadesInterna(NOMBREFICHERO));
+        if (miEscribirMemorias.escribirInterna(NOMBREFICHERO, textoAEscribir, false, "UTF-8"))
+            txtV_PropiedadesFichero.setText(miEscribirMemorias.mostrarPropiedadesInterna(NOMBREFICHERO));
         else
             txtV_PropiedadesFichero.setText("Error al escribir en el fichero " + NOMBREFICHERO);
     }

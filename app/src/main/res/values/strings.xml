@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">EscribirACDAT</string>
+
+    <string name="txtV_Op1">Operando 1</string>
+    <string name="txtV_Op2">Operando 2</string>
+    <string name="txtV_PropsFile">Propiedades de fichero</string>
+    <string name="txtV_Resultado">Resultado</string>
+    <string name="btn_Suma">Suma</string>
 </resources>

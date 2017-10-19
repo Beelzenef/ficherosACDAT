@@ -1,8 +1,14 @@
 package com.example.escibiracdat.operamemoria;
 
 /**
- * Created by usuario on 19/10/17.
+ * Leyendo de memoria interna y memoria externa
+ * @author Elena G (Beelzenef)
  */
 
 public class LeerMemorias {
+
+
+    // De memoria interna
+
+    // De memoria externa
 }
