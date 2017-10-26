@@ -3,6 +3,7 @@ package com.example.escibiracdat;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -55,10 +56,10 @@ public class LeerFicherosActivity extends AppCompatActivity {
 
         txtV_Resultado = (TextView) findViewById(R.id.txtV_Resultado);
 
-            LeyendoDeRaw();
-            LeyendoDeAssets();
-            LeyendoDeInterna();
-            LeyendodeSD();
+        LeyendoDeRaw();
+        LeyendoDeAssets();
+        LeyendoDeInterna();
+        LeyendodeSD();
 
         // Escribiendo en memoria interna para después leer
         if (escribirMemorias.escribirInterna(DATO, "7", false, CODIFICACION))
@@ -105,8 +106,7 @@ public class LeerFicherosActivity extends AppCompatActivity {
     private void LeyendodeSD() {
         resultado = leerMemorias.leerInterna(DATO_SD, CODIFICACION);
 
-        if (resultado.getCodigo())
-        {
+        if (resultado.getCodigo()) {
             edT_LeerMemoriaExt.setText(resultado.getContenido());
         }
         else {
@@ -127,21 +127,41 @@ public class LeerFicherosActivity extends AppCompatActivity {
         }
     }
 
-    private void Suma()
-    {
+    private void Suma() {
+
+        int cantidad = 0;
+        String operacion;
+        String mensaje;
+
+        String op1 = edT_LeerRaw.getText().toString();
+        String op2 = edT_LeerAssets.getText().toString();
+        String op3 = edT_LeerMemoriaInt.getText().toString();
+        String op4 = edT_LeerMemoriaExt.getText().toString();
+
         try {
-            int op1 = Integer.parseInt(edT_LeerRaw.getText().toString());
-            int op2 = Integer.parseInt(edT_LeerAssets.getText().toString());
-            int op3 = Integer.parseInt(edT_LeerMemoriaInt.getText().toString());
-            int op4 = Integer.parseInt(edT_LeerMemoriaExt.getText().toString());
+            cantidad = Integer.parseInt(op1) + Integer.parseInt(op2) + Integer.parseInt(op3) + Integer.parseInt(op4);
+            operacion = op1 + "+" + op2 + "+" + op3 + "+" + op4 + "=" + String.valueOf(cantidad);
+        } catch (NumberFormatException e) {
 
-            int resultadoSuma = op1 + op2 + op3 + op4;
+            Log.e("Error", e.getMessage());
+            operacion = "0";
+            mensaje = e.getMessage();
 
-            txtV_Resultado.setText(String.valueOf(resultadoSuma));
         }
-        catch (NumberFormatException e) {
-            Toast.makeText(getApplicationContext(), "Error al sumar", Toast.LENGTH_SHORT).show();
+
+        txtV_Resultado.setText("Resultado de la operacion: " + String.valueOf(cantidad));
+        if (escribirMemorias.disponibleEscritura()) {
+            if (escribirMemorias.escribirExterna(OPERACIONES, operacion + '\n', true, CODIFICACION))
+                mensaje = "Operación escrita correctamente";
+            else
+                mensaje = "Error al escribir en la memoria externa";
         }
+        else {
+            mensaje = "Memoria externa no disponible";
+        }
+
+        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
+
     }
 
     public void onClick_SumaLeerFicheros(View v) {

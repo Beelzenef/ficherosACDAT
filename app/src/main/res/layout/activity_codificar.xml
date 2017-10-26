@@ -1,10 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.escibiracdat.CodificarActivity">
+    android:orientation="vertical"
+    tools:context="com.example.escibiracdat.CodificarActivity"
+    android:weightSum="1">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fichero: "/>
+
+        <EditText
+            android:layout_width="167dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/edT_FicheroCodificar"
+            android:text="operaciones.txt"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Leer"
+            android:id="@+id/btn_LeerCodificar"
+            android:onClick="onClick_Codificando"/>
+
+    </LinearLayout>
+
+    <EditText
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:layout_gravity="center"
+        android:layout_weight="0.55"
+        android:id="@+id/edT_OperacionesCodificar"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nuevo fichero: "/>
+
+        <EditText
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/edT_NuevoFicheroCodificar"
+            android:text="otro.txt"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Guardar"
+            android:id="@+id/btn_GuardarCodificar"
+            android:onClick="onClick_Codificando"/>
+
+    </LinearLayout>
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UTF-8"
+            android:id="@+id/rdB_UTF8"
+            android:checked="true"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UTF-16"
+            android:id="@+id/rdB_UTF16"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ISO-8859-15"
+            android:id="@+id/rdB_ISO8859"/>
+
+    </RadioGroup>
+
+</LinearLayout>
