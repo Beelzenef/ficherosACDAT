@@ -34,6 +34,9 @@ public class InicioActivity extends AppCompatActivity {
             case R.id.btn_Codificar:
                 unIntento = new Intent(InicioActivity.this, CodificarActivity.class);
                 break;
+            case R.id.btn_ExploradorFicheros:
+                unIntento = new Intent(InicioActivity.this, ExploracionFicherosActivity.class);
+                break;
         }
         startActivity(unIntento);
     }

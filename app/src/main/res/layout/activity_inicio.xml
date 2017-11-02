@@ -40,5 +40,13 @@
         android:onClick="onClik_elegirEj"
         android:id="@+id/btn_Codificar"/>
 
+    <Button
+        android:id="@+id/btn_ExploradorFicheros"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:onClick="onClik_elegirEj"
+        android:text="Explorando"/>
+
 
 </LinearLayout>
